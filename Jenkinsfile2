@@ -8,7 +8,7 @@ pipeline{
 
             steps{
                 echo "========executing A========"
-                bat 'value is : "%person%"'
+                bat 'echo value is : "%person%"'
             }
             post{
                 always{
