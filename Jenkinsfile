@@ -1,37 +1,34 @@
-pipeline {
-    agent any
-
-    stages {
-        stage('Always') {
-            
-                
-            steps {
-                echo 'Hello World'
+pipeline{
+    agent{
+        label "node"
+    }
+    stages{
+        stage("A"){
+            steps{
+                echo "========executing A========"
             }
-        }
-       
-       stage('success') {
-          
-            steps {
-                echo 'Hello World 1'
-            }
-        }
-        stage('failure') {
-           
-            steps {
-                echo 'Hello World 2'
+            post{
+                always{
+                    echo "========always========"
+                }
+                success{
+                    echo "========A executed successfully========"
+                }
+                failure{
+                    echo "========A execution failed========"
+                }
             }
         }
     }
-     post{
-            always{
-                echo "i will say hello always !!!!"
-            }
-            failure{
-                echo "it failed !!!"
-            }
-            success{
-                echo "it success!!!"
-            }
+    post{
+        always{
+            echo "========always========"
         }
+        success{
+            echo "========pipeline executed successfully ========"
+        }
+        failure{
+            echo "========pipeline execution failed========"
+        }
+    }
 }
