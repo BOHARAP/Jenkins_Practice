@@ -8,7 +8,7 @@ pipeline{
         stage("A"){
 
             steps{
-                echo "========executing A========"
+                echos "========executing A========"
                 bat 'echo value is : "%person%"'
             }
             post{
