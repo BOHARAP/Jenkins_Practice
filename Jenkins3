@@ -1,0 +1,78 @@
+pipeline{
+    agent any
+    parameters{
+        string(name:"person",defaultValue:'We are in Test A')
+        string(name:"person2",defaultValue:'We are in Test B')
+    }
+    stages{
+        stage("A"){
+
+            steps{
+                echo "========executing A========"
+                bat 'echo value is : "%person%"'
+            }
+            post{
+                always{
+                    echo "========always========"
+                }
+                success{
+                    echo "========A executed successfully========"
+                }
+                failure{
+                    echo "========A execution failed========"
+                }
+            }
+        }
+
+        stage("B"){
+
+            steps{
+                echo "========executing B========"
+                bat 'echo value is : "%person2%"'
+            }
+            post{
+                always{
+                    echo "========always========"
+                }
+                success{
+                    echo "========B executed successfully========"
+                }
+                failure{
+                    echo "========B execution failed========"
+                }
+            }
+        }
+
+
+        stage("c"){
+
+            steps{
+                echo "========executing c========"
+                bat 'echo value is : "%person2%"'
+            }
+            post{
+                always{
+                    echo "========always========"
+                }
+                success{
+                    echo "========c executed successfully========"
+                }
+                failure{
+                    echo "========c execution failed========"
+                }
+            }
+        }
+
+    }
+    post{
+        always{
+            echo "========always========"
+        }
+        success{
+            echo "========pipeline executed successfully ========"
+        }
+        failure{
+            echo "========pipeline execution failed========"
+        }
+    }
+}
