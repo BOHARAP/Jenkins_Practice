@@ -48,7 +48,7 @@ pipeline{
         stage("C"){
 
             steps{
-                echos "========executing C ========"
+                echo "========executing C ========"
                 bat 'echo value is : "%person3%"'
             }
             post{
