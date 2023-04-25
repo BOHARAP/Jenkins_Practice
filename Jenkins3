@@ -3,6 +3,7 @@ pipeline{
     parameters{
         string(name:"person",defaultValue:'We are in Test A')
         string(name:"person2",defaultValue:'We are in Test B')
+        string(name:"person3",defaultValue:'We are in Test C')
     }
     stages{
         stage("A"){
@@ -44,21 +45,21 @@ pipeline{
         }
 
 
-        stage("c"){
+        stage("C"){
 
             steps{
-                echo "========executing c========"
-                bat 'echo value is : "%person2%"'
+                echo "========executing C ========"
+                bat 'echo value is : "%person3%"'
             }
             post{
                 always{
                     echo "========always========"
                 }
                 success{
-                    echo "========c executed successfully========"
+                    echo "======== C executed successfully========"
                 }
                 failure{
-                    echo "========c execution failed========"
+                    echo "======== C execution failed========"
                 }
             }
         }
