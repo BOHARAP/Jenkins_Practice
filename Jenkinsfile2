@@ -1,7 +1,5 @@
 pipeline{
-    agent{
-        label "node"
-    }
+    agent any
     parameters{
         string(name:"person",defaultValue:'We are in Test')
     }
